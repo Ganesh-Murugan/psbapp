@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { List, Avatar, ActivityIndicator } from "react-native-paper";
 import { AuthenticationContext } from "../../../services/authentication/authentication.context";
 import styled from "styled-components/native";
@@ -22,12 +22,14 @@ export const SettingsScreen = ({ navigation }) => {
   const [isLoading, setIsLoading] = useState(true);
   const firestore = getFirestore();
   const { onLogout, users, error } = useContext(AuthenticationContext);
+  useEffect(() => {
+    getDoc(doc(firestore, "users", users.uid)).then((d) => {
+      console.log("i ran");
+      setName(d.data().name);
+      setIsLoading(false);
+    });
+  }, []);
 
-  getDoc(doc(firestore, "users", users.uid)).then((d) => {
-    console.log("i ran");
-    setName(d.data().name);
-    setIsLoading(false);
-  });
   console.log(name);
   // const docRef = getDoc(doc(firestore, "users", auth.currentUser.uid));
   // console.log(docRef);
