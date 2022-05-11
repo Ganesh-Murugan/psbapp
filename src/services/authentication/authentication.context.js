@@ -6,7 +6,7 @@ import {
   onAuthStateChanged,
   signOut,
 } from "firebase/auth";
-import { getFirestore, setDoc, doc } from "firebase/firestore";
+import { getFirestore, setDoc, doc, getDoc } from "firebase/firestore";
 export const AuthenticationContext = createContext();
 
 export const AuthenticationContextProvider = ({ children }) => {
@@ -15,10 +15,10 @@ export const AuthenticationContextProvider = ({ children }) => {
   const [error, setError] = useState(null);
   const auth = getAuth();
   const firestore = getFirestore();
-
   useEffect(() => {
     return onAuthStateChanged(auth, setUsers);
   }, []);
+
   // onAuthStateChanged(auth, (user) => {
   //   if (user) {
   //     setUsers(user);
@@ -187,6 +187,8 @@ export const AuthenticationContextProvider = ({ children }) => {
         onLogin,
         onRegister,
         onLogout,
+        auth,
+        firestore,
       }}
     >
       {children}

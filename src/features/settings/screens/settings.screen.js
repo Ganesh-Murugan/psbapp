@@ -1,5 +1,5 @@
-import React, { useContext } from "react";
-import { List, Avatar } from "react-native-paper";
+import React, { useContext, useState } from "react";
+import { List, Avatar, ActivityIndicator } from "react-native-paper";
 import { AuthenticationContext } from "../../../services/authentication/authentication.context";
 import styled from "styled-components/native";
 
@@ -7,6 +7,7 @@ import { Text } from "../../../components/typography/text.component";
 import { Spacer } from "../../../components/spacer/spacer.component";
 import { SafeArea } from "../../../components/utility/safe-area.component";
 import { colors } from "../../../infrastructure/theme/colors";
+import { doc, getDoc, getFirestore } from "firebase/firestore";
 
 const SettingsItem = styled(List.Item)`
   padding: ${(props) => props.theme.space[2]};
@@ -17,7 +18,27 @@ const Container = styled.View`
 `;
 
 export const SettingsScreen = ({ navigation }) => {
+  const [name, setName] = useState("");
+  const [isLoading, setIsLoading] = useState(true);
+  const firestore = getFirestore();
   const { onLogout, users, error } = useContext(AuthenticationContext);
+
+  getDoc(doc(firestore, "users", users.uid)).then((d) => {
+    console.log("i ran");
+    setName(d.data().name);
+    setIsLoading(false);
+  });
+  console.log(name);
+  // const docRef = getDoc(doc(firestore, "users", auth.currentUser.uid));
+  // console.log(docRef);
+
+  // if (docRef) {
+  //   console.log("Document data:", docRef.data.name);
+  // } else {
+  //   // doc.data() will be undefined in this case
+  //   console.log("No such document!");
+  // }
+
   return (
     <SafeArea>
       <Container>
@@ -27,7 +48,11 @@ export const SettingsScreen = ({ navigation }) => {
           backgroundColor={colors.ui.tertiary}
         />
         <Spacer position="top" size="large">
-          <Text variant="label">{users.email}</Text>
+          {!isLoading ? (
+            <Text variant="label">{name}</Text>
+          ) : (
+            <ActivityIndicator animating={true} color={colors.ui.secondary} />
+          )}
         </Spacer>
       </Container>
       <List.Section>
@@ -41,6 +66,13 @@ export const SettingsScreen = ({ navigation }) => {
           title="Logout"
           left={(props) => <List.Icon {...props} color="black" icon="door" />}
           onPress={onLogout}
+        />
+        <SettingsItem
+          title="Create Business Account"
+          left={(props) => (
+            <List.Icon {...props} color="black" icon="account" />
+          )}
+          onPress={() => null}
         />
       </List.Section>
     </SafeArea>
