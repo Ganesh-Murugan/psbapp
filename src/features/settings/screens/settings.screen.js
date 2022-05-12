@@ -25,6 +25,7 @@ export const SettingsScreen = ({ navigation }) => {
   useEffect(() => {
     getDoc(doc(firestore, "users", users.uid)).then((d) => {
       if (d) {
+        console.log("i ran");
         setName(d.data().name);
         setIsLoading(false);
       } else {
@@ -32,7 +33,9 @@ export const SettingsScreen = ({ navigation }) => {
         setIsLoading(false);
       }
     });
-  }, []);
+  }, [SettingsScreen]);
+
+  console.log(name);
   // const docRef = getDoc(doc(firestore, "users", auth.currentUser.uid));
   // console.log(docRef);
 
