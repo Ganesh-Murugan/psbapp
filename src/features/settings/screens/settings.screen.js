@@ -24,13 +24,15 @@ export const SettingsScreen = ({ navigation }) => {
   const { onLogout, users, error } = useContext(AuthenticationContext);
   useEffect(() => {
     getDoc(doc(firestore, "users", users.uid)).then((d) => {
-      console.log("i ran");
-      setName(d.data().name);
-      setIsLoading(false);
+      if (d) {
+        setName(d.data().name);
+        setIsLoading(false);
+      } else {
+        setName("none");
+        setIsLoading(false);
+      }
     });
   }, []);
-
-  console.log(name);
   // const docRef = getDoc(doc(firestore, "users", auth.currentUser.uid));
   // console.log(docRef);
 

@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { TouchableOpacity } from "react-native";
+import { TouchableOpacity, View } from "react-native";
 import styled from "styled-components/native";
 import { ActivityIndicator, Colors } from "react-native-paper";
 
@@ -75,14 +75,12 @@ export const HomeScreen = ({ navigation }) => {
           onNavigate={navigation.navigate}
         />
       )}
-      <FadeInView>
-        <ShopList
-          data={filteredshop}
-          ListHeaderComponent={OffersList}
-          renderItem={renderItem}
-          keyExtractor={(item) => item.name}
-        />
-      </FadeInView>
+      <ShopList
+        data={filteredshop}
+        ListHeaderComponent={OffersList}
+        renderItem={renderItem}
+        keyExtractor={(item) => item.name}
+      />
     </SafeArea>
   );
 };

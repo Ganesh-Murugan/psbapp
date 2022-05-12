@@ -10,19 +10,34 @@ import {
 } from "react-native";
 
 const images = [
-  "https://cdn.pixabay.com/photo/2022/03/29/21/04/eggs-7100211_960_720.jpg",
-  "https://images.unsplash.com/photo-1551316679-9c6ae9dec224?w=800&q=80",
-  "https://images.unsplash.com/photo-1562569633-622303bafef5?w=800&q=80",
-  "https://images.unsplash.com/photo-1503656142023-618e7d1f435a?w=800&q=80",
-  "https://images.unsplash.com/photo-1555096462-c1c5eb4e4d64?w=800&q=80",
-  "https://images.unsplash.com/photo-1517957754642-2870518e16f8?w=800&q=80",
-  "https://images.unsplash.com/photo-1546484959-f9a381d1330d?w=800&q=80",
-  "https://images.unsplash.com/photo-1548761208-b7896a6ff225?w=800&q=80",
-  "https://images.unsplash.com/photo-1511208687438-2c5a5abb810c?w=800&q=80",
-  "https://images.unsplash.com/photo-1548614606-52b4451f994b?w=800&q=80",
-  "https://images.unsplash.com/photo-1548600916-dc8492f8e845?w=800&q=80",
+  {
+    id: "1",
+    image: "https://iconape.com/wp-content/files/dw/185903/png/185903.png",
+  },
+  {
+    id: "2",
+    image:
+      "https://lh5.googleusercontent.com/p/AF1QipPsn5Uv08zNvcYmeQ8vftVI-n-cROmmqHXC_62f",
+  },
+  {
+    id: "3",
+    image:
+      "https://scontent.fmaa2-3.fna.fbcdn.net/v/t1.18169-9/13781726_1180081412014760_5872424441395926990_n.png?stp=dst-png_p320x320&_nc_cat=109&ccb=1-6&_nc_sid=85a577&_nc_ohc=ZgW1omQQeVsAX-Zqwyq&_nc_ht=scontent.fmaa2-3.fna&oh=00_AT-i7DWrDQJZ_KDmsm-XZGTEX_0FN7LHWyISdBP4YlJwTQ&oe=62A2AB4D",
+  },
+  {
+    id: "4",
+    image:
+      "https://scontent.fmaa2-3.fna.fbcdn.net/v/t1.18169-9/13781726_1180081412014760_5872424441395926990_n.png?stp=dst-png_p320x320&_nc_cat=109&ccb=1-6&_nc_sid=85a577&_nc_ohc=ZgW1omQQeVsAX-Zqwyq&_nc_ht=scontent.fmaa2-3.fna&oh=00_AT-i7DWrDQJZ_KDmsm-XZGTEX_0FN7LHWyISdBP4YlJwTQ&oe=62A2AB4D",
+  },
+  {
+    id: "5",
+    image: "https://iconape.com/wp-content/files/dw/185903/png/185903.png",
+  },
+  {
+    id: "6",
+    image: "https://iconape.com/wp-content/files/dw/185903/png/185903.png",
+  },
 ];
-
 const WIDTH = Dimensions.get("screen").width;
 const HEIGHT = Dimensions.get("screen").height;
 
@@ -56,11 +71,11 @@ export const Offers = () => {
             <TouchableHighlight
               activeOpacity={0.8}
               underlayColor="#f2f2f2"
-              key={e}
+              key={e.id}
               onPress={({ data }) => trigger()}
             >
               <Image
-                key={e}
+                key={e.id}
                 resizeMode="cover"
                 style={{
                   borderRadius: 25,
@@ -68,7 +83,7 @@ export const Offers = () => {
                   height: HEIGHT * 0.28,
                   marginRight: 20
                 }}
-                source={{ uri: e }}
+                source={{ uri: e.image }}
               />
             </TouchableHighlight>
           ))}
@@ -77,7 +92,7 @@ export const Offers = () => {
         <View style={styles.wrapDot}>
           {images.map((e, index) => (
             <Text
-              key={e}
+              key={e.id}
               style={imgActive === index ? styles.dotActive : styles.dot}
             >
               ●

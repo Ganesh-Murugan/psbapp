@@ -1,0 +1,67 @@
+{
+  "shops": [
+    {
+      "business_status": "OPERATIONAL",
+      "gender": "unisex",
+      "location": {
+        "lat": 37.77361,
+        "lng": -122.421622
+      },
+      "name": "Naturals",
+      "opening_hours": {
+        "open_now": true
+      },
+      "photos": [
+        "https://lh5.googleusercontent.com/p/AF1QipPsn5Uv08zNvcYmeQ8vftVI-n-cROmmqHXC_62f"
+      ],
+      "Offers": ["", ""],
+      "rating": 4.4,
+      "types": ["salon", "parlour", "spa"],
+      "user_ratings_total": 1675,
+      "address": "Second Floor, Big Bazaar Building, 7th Street, Trivandrum Rd, opp. New Bus Stand, Tirunelveli, Tamil Nadu 627007",
+      "vicinity": "opposite New Bus Stand, Tirunelveli"
+    },
+    {
+      "business_status": "OPERATIONAL",
+      "gender": "male",
+      "location": {
+        "lat": 8.713476208841858,
+        "lng": 77.76231542739038
+      },
+      "name": "FCut Style Hair Men Spa",
+      "opening_hours": {
+        "open_now": true
+      },
+      "photos": [
+        "https://scontent.fmaa2-3.fna.fbcdn.net/v/t1.18169-9/13781726_1180081412014760_5872424441395926990_n.png?stp=dst-png_p320x320&_nc_cat=109&ccb=1-6&_nc_sid=85a577&_nc_ohc=ZgW1omQQeVsAX-Zqwyq&_nc_ht=scontent.fmaa2-3.fna&oh=00_AT-i7DWrDQJZ_KDmsm-XZGTEX_0FN7LHWyISdBP4YlJwTQ&oe=62A2AB4D"
+      ],
+      "Offers": ["", ""],
+      "rating": 3,
+      "types": ["salon", "parlour"],
+      "user_ratings_total": 65,
+      "address": "9/10 Abbarna Complex First Floor, St Thomas Rd, Seenivasa Nagar, Tamil Nadu 627011",
+      "vicinity": "St Thomas Rd, Seenivasa Nagar"
+    },
+    {
+      "business_status": "OPERATIONAL",
+      "gender": "unisex",
+      "location": {
+        "lat": 8.724558572711718,
+        "lng": 77.73164733941086
+      },
+      "name": "Green Trends - Unisex Hair & Style Salon",
+      "opening_hours": {
+        "open_now": true
+      },
+      "photos": [
+        "https://iconape.com/wp-content/files/dw/185903/png/185903.png"
+      ],
+      "Offers": ["", ""],
+      "rating": 4,
+      "types": ["salon", "parlour"],
+      "user_ratings_total": 165,
+      "address": "No.125, Trivandrum Road, Siddha College Rd, Palayamkottai, Tirunelveli, Tamil Nadu 627002",
+      "vicinity": "Siddha College Rd, Palayamkottai"
+    }
+  ]
+}
