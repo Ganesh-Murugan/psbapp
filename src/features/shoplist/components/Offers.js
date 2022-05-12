@@ -72,7 +72,7 @@ export const Offers = () => {
               activeOpacity={0.8}
               underlayColor="#f2f2f2"
               key={e.id}
-              onPress={({ data }) => trigger()}
+              onPress={({ data }) => null}
             >
               <Image
                 key={e.id}
