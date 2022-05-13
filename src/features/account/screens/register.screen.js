@@ -33,7 +33,7 @@ export const RegisterScreen = ({ navigation }) => {
           <AuthInput
             label="Name"
             value={name}
-            maxLength={20}
+            maxLength={30}
             textContentType="name"
             autoCapitalize="none"
             onChangeText={(u) => setName(u)}
@@ -83,7 +83,7 @@ export const RegisterScreen = ({ navigation }) => {
             <AuthInput
               label="E-mail"
               value={email}
-              maxLength={40}
+              maxLength={50}
               textContentType="emailAddress"
               keyboardType="email-address"
               autoCapitalize="none"

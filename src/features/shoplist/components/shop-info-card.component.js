@@ -17,13 +17,14 @@ import { Favourite } from "../../../components/favourites/favourites.component";
 export const ShopInfo = ({ shops = {} }) => {
   const {
     name,
-    icon,
-    photos,
+    gender,
+    types,
+    photos = ["https://iconape.com/wp-content/files/dw/185903/png/185903.png"],
     vicinity,
     openingHours,
-    isOpenNow,
-    rating,
-    isClosedTemporarily,
+    isOpenNow = true,
+    rating = 4,
+    type,
   } = shops;
 
   const ratingArray = Array.from(new Array(Math.round(rating)));

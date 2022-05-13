@@ -7,7 +7,14 @@ import { Text } from "../../../components/typography/text.component";
 import { Spacer } from "../../../components/spacer/spacer.component";
 import { SafeArea } from "../../../components/utility/safe-area.component";
 import { colors } from "../../../infrastructure/theme/colors";
-import { doc, getDoc, getFirestore } from "firebase/firestore";
+import {
+  collection,
+  doc,
+  getDoc,
+  getDocs,
+  getFirestore,
+  query,
+} from "firebase/firestore";
 
 const SettingsItem = styled(List.Item)`
   padding: ${(props) => props.theme.space[2]};
@@ -35,7 +42,6 @@ export const SettingsScreen = ({ navigation }) => {
     });
   }, [SettingsScreen]);
 
-  console.log(name);
   // const docRef = getDoc(doc(firestore, "users", auth.currentUser.uid));
   // console.log(docRef);
 

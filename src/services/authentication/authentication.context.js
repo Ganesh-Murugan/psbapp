@@ -39,7 +39,7 @@ export const AuthenticationContextProvider = ({ children }) => {
     } catch (e) {
       const er = e.code;
       console.log(er);
-      if (!email || er === "auth/invalid-email") {
+      if (er === "auth/invalid-email") {
         setIsLoading(false);
         setError("Invalid Email");
         return;
@@ -54,7 +54,7 @@ export const AuthenticationContextProvider = ({ children }) => {
         setError("Please fill the Password field");
         return;
       }
-      if (!email || er === "auth/wrong-password") {
+      if (er === "auth/wrong-password") {
         setIsLoading(false);
         setError("Wrong Password");
         return;
@@ -72,7 +72,7 @@ export const AuthenticationContextProvider = ({ children }) => {
         return;
       } else {
         setIsLoading(false);
-        setError("something went wrong");
+        setError("something went wrong. Try again later");
         return;
       }
     }
@@ -90,6 +90,36 @@ export const AuthenticationContextProvider = ({ children }) => {
   ) => {
     setIsLoading(true);
     try {
+      if (name.length < 4) {
+        setIsLoading(false);
+        setError("Enter a Proper Name");
+        return;
+      }
+      if (phoneNumber.length < 10) {
+        setIsLoading(false);
+        setError("Please enter a valid Phone Number");
+        return;
+      }
+      if (!address.length) {
+        setIsLoading(false);
+        setError("Ivalid address");
+        return;
+      }
+      if (!password) {
+        setIsLoading(false);
+        setError("Please fill the Password field");
+        return;
+      }
+      if (!repeatedPassword) {
+        setIsLoading(false);
+        setError("Please type the Confirm Password field");
+        return;
+      }
+      if (password !== repeatedPassword) {
+        setIsLoading(false);
+        setError("Error: Passwords do not match");
+        return;
+      }
       const userCredential = await createUserWithEmailAndPassword(
         auth,
         email,
@@ -109,21 +139,6 @@ export const AuthenticationContextProvider = ({ children }) => {
     } catch (e) {
       const er = e.code;
       console.log(er);
-      if (name.length < 4) {
-        setIsLoading(false);
-        setError("Enter a Proper Name");
-        return;
-      }
-      if (phoneNumber.length < 10) {
-        setIsLoading(false);
-        setError("Please enter a valid Phone Number");
-        return;
-      }
-      if (!address.length) {
-        setIsLoading(false);
-        setError("Ivalid address");
-        return;
-      }
       if (!email || er === "auth/invalid-email") {
         setIsLoading(false);
         setError("Invalid Email");
@@ -132,21 +147,6 @@ export const AuthenticationContextProvider = ({ children }) => {
       if (er === "auth/weak-password") {
         setIsLoading(false);
         setError("Password must be 6 characters long");
-        return;
-      }
-      if (!password) {
-        setIsLoading(false);
-        setError("Please fill the Password field");
-        return;
-      }
-      if (!repeatedPassword) {
-        setIsLoading(false);
-        setError("Please type the Confirm Password field");
-        return;
-      }
-      if (password !== repeatedPassword) {
-        setIsLoading(false);
-        setError("Error: Passwords do not match");
         return;
       }
       if (er === "auth/email-already-in-use") {

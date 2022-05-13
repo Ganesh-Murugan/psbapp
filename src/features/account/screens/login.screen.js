@@ -28,7 +28,7 @@ export const LoginScreen = ({ navigation }) => {
           value={email}
           autoCompleteType="email"
           textContentType="emailAddress"
-          keyBoardType="email-address"
+          keyboardType="email-address"
           autoCapitalize="none"
           onChangeText={(u) => setEmail(u.trim())}
         />
