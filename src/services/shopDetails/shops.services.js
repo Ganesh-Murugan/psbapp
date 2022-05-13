@@ -25,8 +25,8 @@ export const shopDetailsRequest = async () => {
     };
     // doc.data() is never undefined for query doc snapshots
 
-    //shop.shops.push(s);
-    console.log(shop);
+    shop.shops.push(s);
+    //console.log(shop);
   });
   return shop;
 };
