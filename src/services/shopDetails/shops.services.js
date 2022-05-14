@@ -1,4 +1,3 @@
-import mocks from "./mocks.json";
 import camelize from "camelize";
 import {
   collection,
@@ -10,18 +9,31 @@ import {
 } from "firebase/firestore";
 
 export const shopDetailsRequest = async () => {
+  //const [imagepath, setImagePath] = useState();
   const shop = { shops: [] };
   const firestore = getFirestore();
+
   const q = query(collection(firestore, "shop"));
 
+  // const path = shop.imagepath.replace(
+  //   "gs:/booking-app-16723.appspot.com",
+  //   ""
+  // );
+  // console.log(path);
+  // const Ref = ref(storage, path);
+  // getDownloadURL(Ref).then((x) => {
+  //   shop.photo : url
+  // });
   const querySnapshot = await getDocs(q);
   querySnapshot.forEach((docs) => {
     const s = {
-      name: docs.data().shop.name,
-      gender: docs.data().shop.gender,
-      //photos: docs.data().shop.photos.path,
-      vicinity: docs.data().shop.vicinity,
-      type: docs.data().shop.type,
+      name: docs.data().name,
+      gender: docs.data().gender,
+      //imagepath: docs.data().photos.path,
+      photos: docs.data().photos,
+      openingHours: docs.data().openingHours,
+      address: docs.data().address,
+      type: docs.data().type,
     };
     // doc.data() is never undefined for query doc snapshots
 
@@ -32,6 +44,17 @@ export const shopDetailsRequest = async () => {
 };
 
 export const shopDetailsEdit = ({ shops = [] }) => {
+  // const getUrl = async (v) => {
+  //   console.log(v);
+  //   const path = v.replace("gs:/booking-app-16723.appspot.com", "");
+  //   console.log(path);
+  //   const Ref = ref(storage, path);
+  //   await getDownloadURL(Ref).then((x) => {
+  //     console.log(x);
+  //     return x;
+  //   });
+  // };
+
   const mappedResults = shops.map((shop) => {
     return {
       ...shop,

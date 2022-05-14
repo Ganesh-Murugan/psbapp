@@ -1,6 +1,6 @@
 export const colors = {
   brand: {
-    primary: "#f5c9e0",
+    primary: "#ebcdd5",
     secondary: "#f2f2f2",
     muted: "#C6DAF7",
   },
@@ -19,6 +19,7 @@ export const colors = {
   },
   text: {
     primary: "#262626",
+    title: "#ab50b4",
     secondary: "#757575",
     disabled: "#9C9C9C",
     inverse: "#FFFFFF",

@@ -30,7 +30,7 @@ export const CompactShopInfo = ({ shop, isMap }) => {
 
   return (
     <Item>
-      <Image source={{ uri: shop.photos[0] }} resizeMode="cover" />
+      <Image source={{ uri: shop.photos }} resizeMode="cover" />
       <Text center variant="caption" numberOfLines={3}>
         {shop.name}
       </Text>

@@ -12,7 +12,8 @@ import {
 const images = [
   {
     id: "1",
-    image: "https://iconape.com/wp-content/files/dw/185903/png/185903.png",
+    image:
+      "https://lh3.googleusercontent.com/p/AF1QipOcXWTCKh-Fxhx5QOIdLY7hep2_5Hbn2RSfMF-Y=w1080-h608-p-no-v0",
   },
   {
     id: "2",
@@ -31,11 +32,13 @@ const images = [
   },
   {
     id: "5",
-    image: "https://iconape.com/wp-content/files/dw/185903/png/185903.png",
+    image:
+      "https://lh3.googleusercontent.com/p/AF1QipOcXWTCKh-Fxhx5QOIdLY7hep2_5Hbn2RSfMF-Y=w1080-h608-p-no-v0",
   },
   {
     id: "6",
-    image: "https://iconape.com/wp-content/files/dw/185903/png/185903.png",
+    image:
+      "https://lh3.googleusercontent.com/p/AF1QipOcXWTCKh-Fxhx5QOIdLY7hep2_5Hbn2RSfMF-Y=w1080-h608-p-no-v0",
   },
 ];
 const WIDTH = Dimensions.get("screen").width;
@@ -46,7 +49,8 @@ export const Offers = () => {
   onchange = (nativeEvent) => {
     if (nativeEvent) {
       const slide = Math.floor(
-        (nativeEvent.contentOffset.x / nativeEvent.layoutMeasurement.width) * 1.5
+        (nativeEvent.contentOffset.x / nativeEvent.layoutMeasurement.width) *
+        1.5
       );
       if (slide != imgActive) {
         setimgActive(slide);
@@ -56,7 +60,7 @@ export const Offers = () => {
   return (
     <>
       <View>
-        <Text style={{ paddingLeft: 20, fontSize: 20, fontWeight: 'bold' }}>
+        <Text style={{ paddingLeft: 20, fontSize: 20, fontWeight: "bold" }}>
           Offers
         </Text>
       </View>
@@ -76,12 +80,12 @@ export const Offers = () => {
             >
               <Image
                 key={e.id}
-                resizeMode="cover"
+                resizeMode="stretch"
                 style={{
                   borderRadius: 25,
                   width: WIDTH / 1.5,
                   height: HEIGHT * 0.28,
-                  marginRight: 20
+                  marginRight: 20,
                 }}
                 source={{ uri: e.image }}
               />
