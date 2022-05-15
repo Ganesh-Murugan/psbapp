@@ -31,6 +31,7 @@ export const shopDetailsRequest = async () => {
       gender: docs.data().gender,
       //imagepath: docs.data().photos.path,
       photos: docs.data().photos,
+      contact: docs.data().contact,
       openingHours: docs.data().openingHours,
       address: docs.data().address,
       type: docs.data().type,

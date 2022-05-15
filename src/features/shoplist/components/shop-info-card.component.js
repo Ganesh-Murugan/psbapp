@@ -18,57 +18,108 @@ import { Favourite } from "../../../components/favourites/favourites.component";
 import { Spacer } from "../../../components/spacer/spacer.component";
 //rating-algo => https://stackoverflow.com/questions/10196579/algorithm-used-to-calculate-5-star-ratings
 
-export const ShopInfo = ({ shops = {} }) => {
+export const ShopInfo = ({ shops = {}, home }) => {
   const {
     name,
     gender,
     photos,
     address,
     openingHours,
-    isOpenNow = true,
+    contact,
     rating = 4,
     type,
   } = shops;
   const ratingArray = Array.from(new Array(Math.round(rating)));
 
   return (
-    <StyledCard elevation={5}>
-      <Favourite shop={shops} />
-      <CardCover
-        key={name}
-        source={{
-          uri: photos,
-        }}
-        resizeMode="cover"
-      />
-      <Info>
-        <Text variant="label">{name}</Text>
-        <Section>
-          <Rating>
-            {ratingArray.map((e, index) => (
-              <SvgXml key={index} xml={star} width={20} height={20} />
-            ))}
-          </Rating>
-          <SectionEnd>
-            <Spacer position="right" size="small">
-              {type.spa ? (
-                <SvgXml xml={massage} width={22} height={22} />
-              ) : null}
+    <>
+      {home ? (
+        <StyledCard elevation={5}>
+          <Favourite shop={shops} />
+          <CardCover
+            key={name}
+            source={{
+              uri: photos,
+            }}
+            resizeMode="cover"
+          />
+          <Info>
+            <Text variant="label">{name}</Text>
+            <Section>
+              <Rating>
+                {ratingArray.map((e, index) => (
+                  <SvgXml key={index} xml={star} width={20} height={20} />
+                ))}
+              </Rating>
+              <SectionEnd>
+                <Spacer position="right" size="small">
+                  {type.spa ? (
+                    <SvgXml xml={massage} width={22} height={22} />
+                  ) : null}
+                </Spacer>
+                <Spacer position="right" size="small">
+                  {type.salon ? (
+                    <SvgXml xml={salon} width={22} height={22} />
+                  ) : null}
+                </Spacer>
+                <Spacer position="right" size="small">
+                  {type.parlour ? (
+                    <SvgXml xml={parlour} width={22} height={22} />
+                  ) : null}
+                </Spacer>
+              </SectionEnd>
+            </Section>
+            <Text variant="caption">{`${address.slice(0, 40)}...`}</Text>
+          </Info>
+        </StyledCard>
+      ) : (
+        <StyledCard elevation={5}>
+          <Favourite shop={shops} />
+          <CardCover
+            key={name}
+            source={{
+              uri: photos,
+            }}
+            resizeMode="cover"
+          />
+          <Info>
+            <Text variant="label">{name}</Text>
+            <Section>
+              <Rating>
+                {ratingArray.map((e, index) => (
+                  <SvgXml key={index} xml={star} width={20} height={20} />
+                ))}
+              </Rating>
+              <SectionEnd>
+                <Spacer position="right" size="small">
+                  {type.spa ? (
+                    <SvgXml xml={massage} width={22} height={22} />
+                  ) : null}
+                </Spacer>
+                <Spacer position="right" size="small">
+                  {type.salon ? (
+                    <SvgXml xml={salon} width={22} height={22} />
+                  ) : null}
+                </Spacer>
+                <Spacer position="right" size="small">
+                  {type.parlour ? (
+                    <SvgXml xml={parlour} width={22} height={22} />
+                  ) : null}
+                </Spacer>
+              </SectionEnd>
+            </Section>
+            <Spacer position="top" size="medium">
+              <Text variant="caption">{address}</Text>
             </Spacer>
-            <Spacer position="right" size="small">
-              {type.salon ? (
-                <SvgXml xml={salon} width={22} height={22} />
-              ) : null}
+            <Spacer position="top" size="small">
+              <Text variant="caption">{`Contact: ${contact}`}</Text>
             </Spacer>
-            <Spacer position="right" size="small">
-              {type.parlour ? (
-                <SvgXml xml={parlour} width={22} height={22} />
-              ) : null}
+            <Spacer position="top" size="small">
+              <Text variant="caption">{`Opening Hours: ${openingHours}`}</Text>
             </Spacer>
-          </SectionEnd>
-        </Section>
-        <Text variant="caption">{`${address.slice(0, 40)}...`}</Text>
-      </Info>
-    </StyledCard>
+          </Info>
+        </StyledCard>
+      )}
+    </>
   );
 };

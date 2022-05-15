@@ -50,7 +50,7 @@ export const HomeScreen = ({ navigation }) => {
         onPress={() => navigation.navigate("Shop Details", { shop: item })}
       >
         <Spacer position="bottom" size="large">
-          <ShopInfo shops={item} />
+          <ShopInfo shops={item} home={true} />
         </Spacer>
       </TouchableOpacity>
     );
