@@ -82,7 +82,7 @@ export const Offers = () => {
                 key={e.id}
                 resizeMode="stretch"
                 style={{
-                  borderRadius: 25,
+                  borderRadius: 15,
                   width: WIDTH / 1.5,
                   height: HEIGHT * 0.28,
                   marginRight: 20,

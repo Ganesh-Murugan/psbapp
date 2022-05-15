@@ -61,12 +61,12 @@ export const ShopInfo = ({ shops = {}, home }) => {
                 <></>
               )}
               {gender === "male" ? (
-                <SvgXml xml={male} width={22} height={22} />
+                <SvgXml xml={male} width={18} height={18} />
               ) : (
                 <></>
               )}
               {gender === "female" ? (
-                <SvgXml xml={female} width={22} height={22} />
+                <SvgXml xml={female} width={18} height={18} />
               ) : (
                 <></>
               )}
