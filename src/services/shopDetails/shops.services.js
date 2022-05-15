@@ -35,6 +35,7 @@ export const shopDetailsRequest = async () => {
       openingHours: docs.data().openingHours,
       address: docs.data().address,
       type: docs.data().type,
+      services: docs.data().services,
     };
     // doc.data() is never undefined for query doc snapshots
 

@@ -15,6 +15,10 @@ import { theme } from "./src/infrastructure/theme/index";
 import { AuthenticationContextProvider } from "./src/services/authentication/authentication.context";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
+import { LogBox } from "react-native";
+
+LogBox.ignoreLogs(["Setting a timer"]);
+
 const firebaseConfig = {
   apiKey: "AIzaSyCTbVpib5QnpgNZp3PVWF3sOIYGR5nFCXw",
   authDomain: "booking-app-16723.firebaseapp.com",

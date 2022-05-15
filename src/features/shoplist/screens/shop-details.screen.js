@@ -3,6 +3,7 @@ import { ScrollView } from "react-native";
 import styled from "styled-components/native";
 import { List } from "react-native-paper";
 
+import { ShopList } from "../components/shop-list.styles";
 import { ShopInfo } from "../components/shop-info-card.component";
 import { SafeArea } from "../../../components/utility/safe-area.component";
 import { Spacer } from "../../../components/spacer/spacer.component";
@@ -20,11 +21,12 @@ const Price = styled.Text`
 `;
 
 const ListItem = styled(List.Item)`
-  padding: ${(props) => props.theme.space[3]};
+  padding: ${(props) => props.theme.space[4]};
 `;
 const Container = styled.View`
   padding: ${(props) => props.theme.space[3]};
   background-color: ${colors.bg.primary};
+  border-radius: ${(props) => props.theme.space[2]};
 `;
 const Title = styled.Text`
   font-size: ${(props) => props.theme.sizes[1]};
@@ -35,51 +37,39 @@ export const ShopDetailScreen = ({ route, navigation }) => {
 
   //const handlePress = () => setExpanded(!expanded);
   const { shop } = route.params;
+  const HeaderContent = () => (
+    <>
+      <Spacer position="bottom" size="small">
+        <ShopInfo shops={shop} home={false} />
+      </Spacer>
+      <Container>
+        <Title> Services Provided :-</Title>
+      </Container>
+    </>
+  );
+  const renderItem = ({ item, index }) => {
+    return (
+      <ListItem
+        title={item.name}
+        description={`${item.description.slice(0, 50)}...`}
+        //left={(props) => <List.Icon {...props} color="black" icon="heart" />}
+        onPress={() =>
+          navigation.navigate("Service Details", { service: item })
+        }
+        right={(props) => <Price {...props}>{`${item.price}₹`}</Price>}
+      />
+    );
+  };
   return (
     <SafeArea>
-      <ScrollView showsVerticalScrollIndicator={false}>
-        <ShopInfo shops={shop} home={false} />
-        <Container>
-          <Title> Services Provided :-</Title>
-        </Container>
-        <List.Section>
-          <ListItem
-            title="Hair Cuts & Styling"
-            description="Accentuate your best..."
-            //left={(props) => <List.Icon {...props} color="black" icon="heart" />}
-            onPress={() => navigation.navigate("Service Details")}
-            right={(props) => <Price {...props}>180₹</Price>}
-          />
-          <ListItem
-            title="Hair Colouring & Highlights"
-            description="Reinvent your whole look..."
-            //left={(props) => <List.Icon {...props} color="black" icon="heart" />}
-            onPress={() => navigation.navigate("Service Details")}
-            right={(props) => <Price {...props}>200₹</Price>}
-          />
-          <ListItem
-            title="Hair Spa"
-            description="Pampering yourself and your hair..."
-            //left={(props) => <List.Icon {...props} color="black" icon="heart" />}
-            onPress={() => navigation.navigate("Service Details")}
-            right={(props) => <Price {...props}>250₹</Price>}
-          />
-          <ListItem
-            title="Hair Spa"
-            description="Pampering yourself and your hair..."
-            //left={(props) => <List.Icon {...props} color="black" icon="heart" />}
-            onPress={() => navigation.navigate("Service Details")}
-            right={(props) => <Price {...props}>250₹</Price>}
-          />
-          <ListItem
-            title="Hair Spa"
-            description="Pampering yourself and your hair..."
-            //left={(props) => <List.Icon {...props} color="black" icon="heart" />}
-            onPress={() => navigation.navigate("Service Details")}
-            right={(props) => <Price {...props}>250₹</Price>}
-          />
-        </List.Section>
-      </ScrollView>
+      <List.Section>
+        <ShopList
+          ListHeaderComponent={HeaderContent}
+          data={shop.services}
+          renderItem={renderItem}
+          keyExtractor={(item, index) => index}
+        />
+      </List.Section>
     </SafeArea>
   );
 };

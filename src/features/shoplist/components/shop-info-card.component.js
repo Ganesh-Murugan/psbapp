@@ -5,6 +5,10 @@ import star from "../../../../assets/star";
 import massage from "../../../../assets/massage";
 import salon from "../../../../assets/salon";
 import parlour from "../../../../assets/parlour";
+import unisex from "../../../../assets/unisex";
+import male from "../../../../assets/male";
+import female from "../../../../assets/female";
+
 import { Text } from "../../../components/typography/text.component";
 import {
   StyledCard,
@@ -32,94 +36,75 @@ export const ShopInfo = ({ shops = {}, home }) => {
   const ratingArray = Array.from(new Array(Math.round(rating)));
 
   return (
-    <>
-      {home ? (
-        <StyledCard elevation={5}>
-          <Favourite shop={shops} />
-          <CardCover
-            key={name}
-            source={{
-              uri: photos,
-            }}
-            resizeMode="cover"
-          />
-          <Info>
-            <Text variant="label">{name}</Text>
-            <Section>
-              <Rating>
-                {ratingArray.map((e, index) => (
-                  <SvgXml key={index} xml={star} width={20} height={20} />
-                ))}
-              </Rating>
-              <SectionEnd>
-                <Spacer position="right" size="small">
-                  {type.spa ? (
-                    <SvgXml xml={massage} width={22} height={22} />
-                  ) : null}
-                </Spacer>
-                <Spacer position="right" size="small">
-                  {type.salon ? (
-                    <SvgXml xml={salon} width={22} height={22} />
-                  ) : null}
-                </Spacer>
-                <Spacer position="right" size="small">
-                  {type.parlour ? (
-                    <SvgXml xml={parlour} width={22} height={22} />
-                  ) : null}
-                </Spacer>
-              </SectionEnd>
-            </Section>
-            <Text variant="caption">{`${address.slice(0, 40)}...`}</Text>
-          </Info>
-        </StyledCard>
-      ) : (
-        <StyledCard elevation={5}>
-          <Favourite shop={shops} />
-          <CardCover
-            key={name}
-            source={{
-              uri: photos,
-            }}
-            resizeMode="cover"
-          />
-          <Info>
-            <Text variant="label">{name}</Text>
-            <Section>
-              <Rating>
-                {ratingArray.map((e, index) => (
-                  <SvgXml key={index} xml={star} width={20} height={20} />
-                ))}
-              </Rating>
-              <SectionEnd>
-                <Spacer position="right" size="small">
-                  {type.spa ? (
-                    <SvgXml xml={massage} width={22} height={22} />
-                  ) : null}
-                </Spacer>
-                <Spacer position="right" size="small">
-                  {type.salon ? (
-                    <SvgXml xml={salon} width={22} height={22} />
-                  ) : null}
-                </Spacer>
-                <Spacer position="right" size="small">
-                  {type.parlour ? (
-                    <SvgXml xml={parlour} width={22} height={22} />
-                  ) : null}
-                </Spacer>
-              </SectionEnd>
-            </Section>
+    <StyledCard elevation={5}>
+      <Favourite shop={shops} />
+      <CardCover
+        key={name}
+        source={{
+          uri: photos,
+        }}
+        resizeMode="cover"
+      />
+      <Info>
+        <Text variant="label">{name}</Text>
+        <Section>
+          <Rating>
+            {ratingArray.map((e, index) => (
+              <SvgXml key={index} xml={star} width={20} height={20} />
+            ))}
+          </Rating>
+          <SectionEnd>
+            <Spacer position="right" size="xl">
+              {gender === "unisex" ? (
+                <SvgXml xml={unisex} width={22} height={22} />
+              ) : (
+                <></>
+              )}
+              {gender === "male" ? (
+                <SvgXml xml={male} width={22} height={22} />
+              ) : (
+                <></>
+              )}
+              {gender === "female" ? (
+                <SvgXml xml={female} width={22} height={22} />
+              ) : (
+                <></>
+              )}
+            </Spacer>
+            <Spacer position="right" size="small">
+              {type.spa ? (
+                <SvgXml xml={massage} width={22} height={22} />
+              ) : null}
+            </Spacer>
+            <Spacer position="right" size="small">
+              {type.hair ? <SvgXml xml={salon} width={22} height={22} /> : null}
+            </Spacer>
+            <Spacer position="right" size="small">
+              {type.beauty ? (
+                <SvgXml xml={parlour} width={22} height={22} />
+              ) : null}
+            </Spacer>
+          </SectionEnd>
+        </Section>
+        {home ? (
+          <Text variant="caption">{`${address.slice(0, 40)}...`}</Text>
+        ) : (
+          <>
             <Spacer position="top" size="medium">
               <Text variant="caption">{address}</Text>
             </Spacer>
-            <Spacer position="top" size="small">
+            <Spacer position="top" size="medium">
+              <Text variant="caption">{`gender: ${gender}`}</Text>
+            </Spacer>
+            <Spacer position="top" size="medium">
               <Text variant="caption">{`Contact: ${contact}`}</Text>
             </Spacer>
-            <Spacer position="top" size="small">
+            <Spacer position="top" size="medium">
               <Text variant="caption">{`Opening Hours: ${openingHours}`}</Text>
             </Spacer>
-          </Info>
-        </StyledCard>
-      )}
-    </>
+          </>
+        )}
+      </Info>
+    </StyledCard>
   );
 };
